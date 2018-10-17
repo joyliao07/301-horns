@@ -18,8 +18,7 @@ Horns.prototype.render = function () {
 
 
 Horns.allhorn = [];
-Horns.keyword = [];
-
+Horns.objKey = [];
 
 function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
@@ -27,24 +26,41 @@ function onlyUnique(value, index, self) {
 
 
 Horns.selectList = function () {
+  Horns.keyword = [];
   Horns.allhorn.forEach( horn => {
     Horns.keyword.push(horn.keyword);
   });
   Horns.keyword = Horns.keyword.filter(onlyUnique).sort();
+
+  let obj = {};
+  obj.keyword = 'Select A Creature';
+  Horns.objKey.push(obj);
+
+  Horns.keyword.forEach( keyword => {
+    let obj = {};
+    obj.keyword = keyword;
+    Horns.objKey.push(obj);
+  });
+
   Horns.selectRender();
 }
 
 
 Horns.selectRender = function () {
-  Horns.keyword.forEach( key => {
-    console.log('key is: ', key);
+  Horns.objKey.forEach( key => {
     let $newSelect = $('#select-template').html();
     let compiled = Handlebars.compile($newSelect);
-    $('#select-display').append(compiled(key));
+    $('#select-horn').append(compiled(key));
   });
 }
 
 
+$('select#select-horn').on('change', function() {
+  let selected = $(this).val();
+  console.log('selected is: ', selected);
+  $('#horn-display div').hide();
+  $(`.${selected}`).fadeIn(900);
+})
 
 
 

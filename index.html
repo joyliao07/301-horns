@@ -4,21 +4,21 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/styles.css">
     <script id="horn-template" type="text/x-handlebars-template" >
-      <div id="{{keyword}}"> 
+      <div class="{{keyword}}"> 
         <h2>{{ title }}</h2>
         <img src="{{ picture }}" alt="">
         <p>{{description}}</p>
       </div> 
     </script>
     <script id="select-template" type="text/x-handlebars-template" >
-      <option>{{ key }}</option>
+      <option>{{ keyword }}</option>
     </script>
   </head>
 
   <body>
     <h1>Popular Horns</h1>
 
-    <select id="select-display"></select>
+    <select id="select-horn"></select>
 
 
     <div id="horn-display"></div>
