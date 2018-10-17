@@ -57,12 +57,15 @@ Horns.selectRender = function () {
 
 $('select#select-horn').on('change', function() {
   let selected = $(this).val();
-  console.log('selected is: ', selected);
   $('#horn-display div').hide();
   $(`.${selected}`).fadeIn(900);
 })
 
-
+$('a').on('click', function(){
+  let page = event.target.id;
+  console.log('page is selected', page);
+  
+})
 
 
 
