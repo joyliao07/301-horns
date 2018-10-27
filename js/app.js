@@ -19,6 +19,7 @@ Horns.prototype.render = function () {
 
 Horns.allhorn = [];
 Horns.objKey = [];
+let page = 'page-2';
 
 function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
@@ -62,15 +63,18 @@ $('select#select-horn').on('change', function() {
 })
 
 $('a').on('click', function(){
-  let page = event.target.id;
+  page = event.target.id;
   console.log('page is selected', page);
+  $('#horn-display').children().remove();
+  $('#select-horn').children().remove();
+  Horns.readJson();
   
 })
 
 
 
 Horns.readJson = function (){
-  $.get('./data/page-1.json', 'json')
+  $.get(`./data/${page}.json`, 'json')
     .then( data => {
       data.forEach( each => {
         Horns.allhorn.push(new Horns(each));
