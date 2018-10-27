@@ -20,7 +20,7 @@ Horns.prototype.render = function () {
 
 Horns.allhorn = [];
 Horns.objKey = [{keyword: 'Select A Creature'}];
-let page = 'page-2';
+let page = 'page-1';
 let sort = '';
 
 
@@ -58,7 +58,7 @@ Horns.selectRender = function () {
 $('select#select-horn').on('change', function() {
   let selected = $(this).val();
   $('#horn-display div').hide();
-  $(`.${selected}`).fadeIn(900);
+  $(`#${selected}`).fadeIn(900);
 })
 
 

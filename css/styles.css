@@ -1,9 +1,10 @@
 body {
     background-color: rgb(151, 122, 127);
+    max-width: 1200px;
 }
 
 img {
-    width: 100px;
+    width: 200px;
 }
 
 h1 {
@@ -11,11 +12,13 @@ h1 {
 }
 
 h2 {
-    font-size: 25px;
+    font-size: 20px;
+    font-weight: bolder;
 }
 
 div {
-    margin: 100px 30px;
+    margin: 70px 50px;
+    align-content: center;
 }
 
 #pagination {
@@ -25,3 +28,29 @@ div {
 p {
     display: none;
 }
+
+#horn-display {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.horns {
+    width: 250px;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
