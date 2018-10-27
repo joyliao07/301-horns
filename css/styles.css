@@ -21,3 +21,7 @@ div {
 #pagination {
     margin: 20px 15px;
 }
+
+p {
+    display: none;
+}
