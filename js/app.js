@@ -10,6 +10,7 @@ function Horns (creature) {
 }
 
 
+//SHOULD BE RENDER FROM Horns.allhorn, NOT DIRECTLY FROM 'THIS'
 Horns.prototype.render = function () {
   let $newSection = $('#horn-template').html();
   let compiled = Handlebars.compile($newSection);
@@ -18,8 +19,9 @@ Horns.prototype.render = function () {
 
 
 Horns.allhorn = [];
-Horns.objKey = [];
+Horns.objKey = [{keyword: 'Select A Creature'}];
 let page = 'page-2';
+
 
 function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
@@ -32,10 +34,6 @@ Horns.selectList = function () {
     Horns.keyword.push(horn.keyword);
   });
   Horns.keyword = Horns.keyword.filter(onlyUnique).sort();
-
-  let obj = {};
-  obj.keyword = 'Select A Creature';
-  Horns.objKey.push(obj);
 
   Horns.keyword.forEach( keyword => {
     let obj = {};
@@ -62,15 +60,23 @@ $('select#select-horn').on('change', function() {
   $(`.${selected}`).fadeIn(900);
 })
 
+
 $('a').on('click', function(){
   page = event.target.id;
-  console.log('page is selected', page);
   $('#horn-display').children().remove();
-  $('#select-horn').children().remove();
+  $('option').remove();
+  Horns.objKey = [];
+  Horns.allhorn = [];
   Horns.readJson();
-  
 })
 
+
+$('input[type=radio]').on('click', function() {
+  let sort = this.value;
+  console.log('sort is: ', sort);
+
+
+});
 
 
 Horns.readJson = function (){
