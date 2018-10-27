@@ -6,7 +6,7 @@ function Horns (creature) {
   this.description = creature.description;
   this.keyword = creature.keyword;
   this.hornNum = creature.horns;
-  this.render();
+  // this.render();
 }
 
 
@@ -21,6 +21,7 @@ Horns.prototype.render = function () {
 Horns.allhorn = [];
 Horns.objKey = [{keyword: 'Select A Creature'}];
 let page = 'page-2';
+let sort = '';
 
 
 function onlyUnique(value, index, self) {
@@ -65,16 +66,19 @@ $('a').on('click', function(){
   page = event.target.id;
   $('#horn-display').children().remove();
   $('option').remove();
-  Horns.objKey = [];
+  Horns.objKey = [{keyword: 'Select A Creature'}];
   Horns.allhorn = [];
   Horns.readJson();
 })
 
 
 $('input[type=radio]').on('click', function() {
-  let sort = this.value;
-  console.log('sort is: ', sort);
-
+  sort = this.value;
+  $('#horn-display').children().remove();
+  $('option').remove();
+  Horns.objKey = [{keyword: 'Select A Creature'}];
+  Horns.allhorn = [];
+  Horns.readJson();
 
 });
 
@@ -86,6 +90,12 @@ Horns.readJson = function (){
         Horns.allhorn.push(new Horns(each));
       });
       Horns.selectList();
+      if (sort === 'by-title'){
+        Horns.allhorn.sort((a, b) => a.title > b.title ? 1 : b.title > a.title ? -1 : 0);
+      } else if (sort === 'by-horns'){
+        Horns.allhorn.sort((a, b) => a.hornNum - b.hornNum);
+      }
+      Horns.allhorn.forEach(each => each.render());
     });
 }
 
