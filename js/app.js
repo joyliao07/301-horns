@@ -83,6 +83,11 @@ $('input[type=radio]').on('click', function() {
 });
 
 
+$('a.horns').on('click', function(){
+  console.log('horn is clicked');
+});
+
+
 Horns.readJson = function (){
   $.get(`./data/${page}.json`, 'json')
     .then( data => {
