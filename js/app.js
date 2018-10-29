@@ -85,11 +85,13 @@ $('input[type=radio]').on('click', function() {
 
 $('#horn-display').on('click', 'div', function(){
   console.log(this.id);
-  $('#horn-display').children().hide();
-  $(`#${this.id}`).addClass('to-show');
-  $(`#${this.id}`).removeClass('horns');
+  $('#horn-display').children().toggle();
+  $(`#${this.id}`).toggleClass('to-show');
+  $(`#${this.id}`).toggleClass('horns');
   $(`#${this.id}`).fadeIn(900);
 });
+
+
 
 
 Horns.readJson = function (){
