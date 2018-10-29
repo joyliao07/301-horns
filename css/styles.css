@@ -25,7 +25,7 @@ div {
     margin: 20px 15px;
 }
 
-p {
+.horns p {
     display: none;
 }
 
@@ -42,11 +42,17 @@ p {
     margin: auto;
 }
 
+.to-show img {
+    width: 300px;
+}
 
+.to-show h2 {
+    font-size: 40px;
+}
 
-
-
-
+.to-show p {
+    font-size: 30px;
+}
 
 
 

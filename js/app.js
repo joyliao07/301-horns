@@ -58,7 +58,7 @@ Horns.selectRender = function () {
 $('select#select-horn').on('change', function() {
   let selected = $(this).val();
   $('#horn-display div').hide();
-  $(`#${selected}`).fadeIn(900);
+  $(`.${selected}`).fadeIn(900);
 })
 
 
@@ -83,8 +83,12 @@ $('input[type=radio]').on('click', function() {
 });
 
 
-$('a.horns').on('click', function(){
-  console.log('horn is clicked');
+$('#horn-display').on('click', 'div', function(){
+  console.log(this.id);
+  $('#horn-display').children().hide();
+  $(`#${this.id}`).addClass('to-show');
+  $(`#${this.id}`).removeClass('horns');
+  $(`#${this.id}`).fadeIn(900);
 });
 
 
