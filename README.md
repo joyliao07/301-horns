@@ -1,1 +1,16 @@
-# 301-horns
+# Horns Project: jQuery & Flexbox Templating in JavaScript
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
